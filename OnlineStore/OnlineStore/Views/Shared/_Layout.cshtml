@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="container">Header</header>
+    <section class="container">
+        @RenderBody()
+    </section>
+
+    <footer class="container">
+        <div class="text-center">
+            copyright
+        </div>
+    </footer>
+
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="~/scripts/bootstrap.bundle.min.js"></script>
+
+    @RenderSection("scripts", false)
+
+</body>
+</html>
