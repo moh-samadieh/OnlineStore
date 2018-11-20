@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "OnlineStoreConnectionString": "Data Source=37.228.138.2;Initial Catalog=gerdejah_onlinestore;Persist Security Info=True;User ID=gerdejah_onlinestore;Password=Pn8vi@81"
+  }
+}
