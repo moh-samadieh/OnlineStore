@@ -15,6 +15,7 @@ namespace OnlineStore.Data.Entities
         public Brand Brand { get; set; }
 
         public ICollection<ProductConfig> ProductConfigs { get; set; }
+        public ICollection<ProductImage> ProductImages { get; set; }
 
         public ICollection<CategoryProduct> CategoryProducts { get; set; }
     }

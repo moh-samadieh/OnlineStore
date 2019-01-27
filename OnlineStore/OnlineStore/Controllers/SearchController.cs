@@ -30,7 +30,8 @@ namespace OnlineStore.Controllers
             var plist = this._context.CategoryProducts
                 .Where(x => catChild.Contains(x.CategoryID))
                 .Select(x => x.Product)
-                .Include(x => x.Brand);
+                .Include(x => x.Brand)
+                .Include(x => x.ProductImages);
 
             return View(plist);
         }

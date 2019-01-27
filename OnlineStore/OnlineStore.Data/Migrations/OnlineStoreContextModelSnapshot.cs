@@ -155,6 +155,24 @@ namespace OnlineStore.Data.Migrations
                     b.ToTable("ProductConfigs");
                 });
 
+            modelBuilder.Entity("OnlineStore.Data.Entities.ProductImage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired();
+
+                    b.Property<int>("ProductID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("ProductImage");
+                });
+
             modelBuilder.Entity("OnlineStore.Data.Entities.Seller", b =>
                 {
                     b.Property<int>("ID")
@@ -218,6 +236,14 @@ namespace OnlineStore.Data.Migrations
                     b.HasOne("OnlineStore.Data.Entities.Seller", "Seller")
                         .WithMany()
                         .HasForeignKey("SellerID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OnlineStore.Data.Entities.ProductImage", b =>
+                {
+                    b.HasOne("OnlineStore.Data.Entities.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
     <header class="container">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <h1 class="navbar-brand">Online Store</h1>
+            <h1 class="navbar-brand">
+                <a href="/"><i class="fa fa-envelope"></i> Online Store</a>
+            </h1>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#themenu">
                 <span class=" navbar-toggler-icon"></span>
             </button>
@@ -26,6 +29,14 @@
                         <a class="nav-link" href="google.com">google.com</a>
                     </li>
                 </ul>
+                
+                <form asp-action="Index" asp-controller="Search" method="get">
+
+                    <input id="category" name="category" />
+
+                    <input type="submit" value="جستجو" />
+
+                </form>
             </div>
         </nav>
     </header>

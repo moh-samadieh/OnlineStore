@@ -26,9 +26,11 @@ namespace OnlineStore
         {
             //services.AddDbContext<Data.OnlineStoreContext>(cfg => cfg.UseSqlServer("Data Source=37.228.138.2;Initial Catalog=gerdejah_onlinestore;Persist Security Info=True;User ID=gerdejah_onlinestore;Password=Pn8vi@81"));
 
-            services.AddDbContext<Data.OnlineStoreContext>(cfg => cfg.UseSqlServer(_config.GetConnectionString("OnlineStoreConnectionString")));
+            services.AddDbContext<Data.OnlineStoreContext>(cfg =>
+                cfg.UseSqlServer(_config.GetConnectionString("OnlineStoreConnectionString")));
 
-            services.AddMvc();
+            services.AddMvc()
+                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +44,15 @@ namespace OnlineStore
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
+            {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}"));
+                    name: "p",
+                    template: "product/pid-{id}/{controller=Product}/{action=Index}");
+
+                routes.MapRoute(
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }

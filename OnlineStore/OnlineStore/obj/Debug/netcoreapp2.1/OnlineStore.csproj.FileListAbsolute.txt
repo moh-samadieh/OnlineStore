@@ -54,3 +54,4 @@ E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.1\Onli
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.1\OnlineStore.Data.pdb
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Views\Search\Index.g.cshtml.cs
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Views\Product\Index.g.cshtml.cs
