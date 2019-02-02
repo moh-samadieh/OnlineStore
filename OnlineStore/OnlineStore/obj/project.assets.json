@@ -4616,14 +4616,14 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "OnlineStore.Data/1.0.0": {
+      "_OnlineStore.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "compile": {
-          "bin/placeholder/OnlineStore.Data.dll": {}
+          "bin/placeholder/_OnlineStore.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/OnlineStore.Data.dll": {}
+          "bin/placeholder/_OnlineStore.Data.dll": {}
         }
       }
     }
@@ -12274,10 +12274,10 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "OnlineStore.Data/1.0.0": {
+    "_OnlineStore.Data/1.0.0": {
       "type": "project",
-      "path": "../OnlineStore.Data/OnlineStore.Data.csproj",
-      "msbuildProject": "../OnlineStore.Data/OnlineStore.Data.csproj"
+      "path": "../OnlineStore.Data/_OnlineStore.Data.csproj",
+      "msbuildProject": "../OnlineStore.Data/_OnlineStore.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12286,7 +12286,7 @@
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.1",
-      "OnlineStore.Data >= 1.0.0"
+      "_OnlineStore.Data >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -12319,8 +12319,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\OnlineStore.Data.csproj": {
-              "projectPath": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\OnlineStore.Data.csproj"
+            "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\_OnlineStore.Data.csproj": {
+              "projectPath": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\_OnlineStore.Data.csproj"
             }
           }
         }

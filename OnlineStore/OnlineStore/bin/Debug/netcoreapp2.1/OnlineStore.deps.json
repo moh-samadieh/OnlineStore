@@ -28,7 +28,7 @@
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
-          "OnlineStore.Data": "1.0.0"
+          "_OnlineStore.Data": "1.0.0"
         },
         "runtime": {
           "OnlineStore.dll": {}
@@ -515,12 +515,12 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "OnlineStore.Data/1.0.0": {
+      "_OnlineStore.Data/1.0.0": {
         "runtime": {
-          "OnlineStore.Data.dll": {}
+          "_OnlineStore.Data.dll": {}
         },
         "compile": {
-          "OnlineStore.Data.dll": {}
+          "_OnlineStore.Data.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3653,7 +3653,7 @@
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
     },
-    "OnlineStore.Data/1.0.0": {
+    "_OnlineStore.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -516,10 +516,11 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "TT+QCi9LcxGTjBssH7S7n5+8DVcwfG4DYgXX7Dk7+BfZ4oVHj8Q0CbYk9glzAlHLsSt3bYzol+fOdra2iu6GOw==",
+      "sha512": "aSTPL94NloSiQVL5Len8wbjFKOnoAX/vOh3s3DF6g3c7GUUMLCDvnBhmA72M2iN2AedyA8hpr7m89kzSAKUnJQ==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -687,9 +688,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\OnlineStore.Data.csproj",
-      "projectName": "OnlineStore.Data",
-      "projectPath": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\OnlineStore.Data.csproj",
+      "projectUniqueName": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\_OnlineStore.Data.csproj",
+      "projectName": "_OnlineStore.Data",
+      "projectPath": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\_OnlineStore.Data.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
       "outputPath": "E:\\Projects\\OnlineStore\\GIT\\OnlineStore\\OnlineStore.Data\\obj\\",
       "projectStyle": "PackageReference",

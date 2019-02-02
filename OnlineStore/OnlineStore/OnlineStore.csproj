@@ -11,11 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineStore.Data\OnlineStore.Data.csproj" />
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\" />
+    <ProjectReference Include="..\OnlineStore.Data\_OnlineStore.Data.csproj" />
   </ItemGroup>
 
 </Project>

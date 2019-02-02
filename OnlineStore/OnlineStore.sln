@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore", "OnlineStore\OnlineStore.csproj", "{2098FD65-78F6-4EC4-8B94-73CB27964CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Data", "OnlineStore.Data\OnlineStore.Data.csproj", "{71770E2F-835C-41F0-A597-DD54AA9136CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_OnlineStore.Data", "OnlineStore.Data\_OnlineStore.Data.csproj", "{71770E2F-835C-41F0-A597-DD54AA9136CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
