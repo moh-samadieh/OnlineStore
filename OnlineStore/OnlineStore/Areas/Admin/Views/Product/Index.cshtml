@@ -1,0 +1,100 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<OnlineStore.Data.Entities.Product>
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+<h2>Product List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-dark">Create New</a>
+</p>
+<div>
+    <input id="tbsearch" />
+    <button id="btnSearch" onclick="search()">جستجو</button>
+</div>
+
+@*
+    <table class="table" id="mm">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameFa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+
+    @section scripts
+        {
+        <script>
+
+            $("#tbody").load("/api/table");
+
+            function search() {
+                var s = $("#tbsearch").val();
+
+                const query = new URL(window.location);
+                query.searchParams.set("a", "123");
+
+                history.pushState(null, '', query);
+
+                $("#tbody").load("/api/table/?s=" + s);
+            }
+
+        </script>
+    }*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+
+            </th>
+            <th>
+                NameFa
+
+            </th>
+            <th>
+                Brand
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">   @Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameFa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.Name)
+                </td>
+                <td>
+                    <div class="d-flex flex-nowrap">
+                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.ID">Edit</a>&nbsp;<a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.ID">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

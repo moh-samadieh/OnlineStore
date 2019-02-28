@@ -8,18 +8,13 @@ using OnlineStore.Data.Entities;
 
 namespace OnlineStore.Services
 {
-    public class Repository
+    public partial class Repository
     {
         private readonly OnlineStoreContext _myContext;
 
         public Repository(OnlineStoreContext myContext)
         {
             this._myContext = myContext;
-        }
-
-        public Product GetProduct(int ID)
-        {
-            return this._myContext.Products.Include(x => x.ProductImages).FirstOrDefault(x => x.ID == ID);
         }
     }
 }

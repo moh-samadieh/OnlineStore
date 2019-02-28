@@ -95,3 +95,9 @@ E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razo
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Home\Index.g.cshtml.cs
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\_ViewImports.g.cshtml.cs
 E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\_ViewStart.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Product\Index.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Product\Edit.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Product\Create.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Product\Details.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Product\Delete.g.cshtml.cs
+E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.1\Razor\Areas\Admin\Views\Shared\mytable.g.cshtml.cs

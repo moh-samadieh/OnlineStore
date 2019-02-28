@@ -1,0 +1,13 @@
+﻿@model List<OnlineStore.Data.Entities.Product>
+
+@{
+    Layout = "";
+}
+
+@foreach (var user in Model)
+{
+    <tr>
+        <td>@user.Name</td>
+        <td>@user.NameFa</td>
+    </tr>
+}
