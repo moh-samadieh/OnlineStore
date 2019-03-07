@@ -24,6 +24,20 @@ namespace OnlineStore.Services
                 .Include(x => x.Brand);
         }
 
+        public IQueryable<Category> GetProductCategories(int ProductID)
+        {
+            return this._myContext.CategoryProducts
+                .Where(x => x.ProductID == ProductID)
+                .Select(x => x.Category);
+        }
+
+        public IQueryable<ProductImage> GetProductImages(int ProductID)
+        {
+            return this._myContext.ProductImages
+                .Where(x => x.ProductID == ProductID);
+        }
+
+
         public void EditProduct(Product p)
         {
             this._myContext.Entry(p).State = EntityState.Modified;
@@ -44,7 +58,7 @@ namespace OnlineStore.Services
 
         public void DeleteProduct(int ID)
         {
-            var employee = new Product() {ID = ID};
+            var employee = new Product() { ID = ID };
             this._myContext.Products.Remove(employee);
             _myContext.SaveChanges();
         }

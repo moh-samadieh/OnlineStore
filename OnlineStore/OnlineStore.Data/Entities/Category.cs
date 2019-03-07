@@ -10,6 +10,9 @@ namespace OnlineStore.Data.Entities
         public int ID { get; set; }
         public string Name { get; set; }
         public string NameFa { get; set; }
+
+        public int? CategoryParentID { get; set; }
+
         public Category CategoryParent { get; set; }
 
         public ICollection<Category> Categories { get; set; }

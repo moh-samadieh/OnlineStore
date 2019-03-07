@@ -1,5 +1,4 @@
-﻿@using X.PagedList
-@using X.PagedList.Mvc.Core
+﻿
 @model X.PagedList.IPagedList<OnlineStore.Data.Entities.Product>
 
 @{
@@ -12,64 +11,60 @@
     <a asp-action="Create" class="btn btn-dark">Create New</a>
 </p>
 <div>
-    <input id="tbsearch" />
-    <button id="btnSearch" onclick="search()">جستجو</button>
+    <form asp-action="Index" method="get">
+        <input id="search" name="search" value="@ViewBag.Search" />
+        <button id="btnSearch">جستجو</button>
+    </form>
 </div>
 
-@*
-    <table class="table" id="mm">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NameFa)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Brand)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-    </table>
+@{
 
+    string sort1 = "Name_desc";
+    string sort2 = "NameFa";
+    string sort3 = "Brand";
 
-    @section scripts
+    string sort = Context.Request.Query["sort"];
+
+    if (!string.IsNullOrEmpty(sort))
+    {
+        if (sort == "Name_desc")
         {
-        <script>
-
-            $("#tbody").load("/api/table");
-
-            function search() {
-                var s = $("#tbsearch").val();
-
-                const query = new URL(window.location);
-                query.searchParams.set("a", "123");
-
-                history.pushState(null, '', query);
-
-                $("#tbody").load("/api/table/?s=" + s);
-            }
-
-        </script>
-    }*@
+            sort1 = "Name";
+        }
+        else if (sort == "NameFa")
+        {
+            sort1 = "Name";
+            sort2 = "NameFa_desc";
+        }
+        else if (sort == "NameFa_desc")
+        {
+            sort1 = "Name";
+            sort2 = "NameFa";
+        }
+        else if (sort == "Brand")
+        {
+            sort1 = "Name";
+            sort3 = "Brand_desc";
+        }
+        else if (sort == "Brand_desc")
+        {
+            sort1 = "Name";
+            sort3 = "Brand";
+        }
+    }
+}
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                Name
-
+                <a asp-action="Index" asp-route-sort="@sort1">Name</a>
             </th>
             <th>
-                NameFa
-
+                <a asp-action="Index" asp-route-sort="@sort2">NameFa</a>
             </th>
             <th>
-                Brand
-
+                <a asp-action="Index" asp-route-sort="@sort3">Brand</a>
             </th>
             <th></th>
         </tr>
@@ -97,4 +92,5 @@
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, search = Context.Request.Query["search"], sort = Context.Request.Query["sort"] }),
+    X.PagedList.Mvc.Common.PagedListRenderOptions.ClassicPlusFirstAndLast)

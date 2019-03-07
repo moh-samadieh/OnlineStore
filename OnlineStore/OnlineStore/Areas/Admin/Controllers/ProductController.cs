@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using OnlineStore.Areas.Admin.ViewModels;
 using OnlineStore.Services;
 using X.PagedList;
 
@@ -13,20 +15,30 @@ namespace OnlineStore.Areas.Admin.Controllers
 {
     public class ProductController : BaseController
     {
-        public ProductController(Repository repository) : base(repository)
+        public ProductController(Repository repository, IHostingEnvironment hostingEnvironment) : base(repository, hostingEnvironment)
         {
         }
 
-        public override object GetDataRows()
+        public override object GetDataRows(int page, string search, string sort)
         {
-            var laaa = GetList("Name", "", 2).Result;
+            //  this._repository.GetProducts().ToPagedList(1, 2);
 
-            return this._repository.GetProducts().ToPagedList(1, 2);
+            var lst = GetList(sort, search, page);
+
+            return lst;
         }
 
         public override object GetDataRow(int id)
         {
-            return this._repository.GetProduct(id);
+            var p = this._repository.GetProduct(id);
+
+            var m = new ProductViewModel { Product = p };
+
+            var images = _repository.GetProductImages(id);
+
+            m.Images = images.Select(x => x.ProductID + "-" + x.ID).ToList();
+
+            return m;
         }
 
         public override object CreateNewRow()
@@ -51,28 +63,38 @@ namespace OnlineStore.Areas.Admin.Controllers
             return View("mytable", d.ToList());
         }
 
-        public async Task<Lib.PaginatedList<Data.Entities.Product>> GetList(string sortOrder, string searchString, int? pageIndex)
+        public IPagedList GetList(string sortOrder, string searchString, int? pageIndex)
         {
             var q = this._repository.GetProducts().Where(x => x.Name.Contains(searchString) || x.NameFa.Contains(searchString));
 
-            switch (sortOrder)
+            switch (sortOrder.ToLower())
             {
-                case "Name":
+                case "":
+                case "name":
                     q = q.OrderBy(s => s.Name);
                     break;
-                case "Name_desc":
+                case "name_desc":
                     q = q.OrderByDescending(s => s.Name);
                     break;
-                case "NameFa":
+                case "namefa":
                     q = q.OrderBy(s => s.NameFa);
                     break;
-                case "NameFa_desc":
+                case "namefa_desc":
                     q = q.OrderByDescending(s => s.NameFa);
+                    break;
+                case "brand":
+                    q = q.OrderBy(s => s.Brand.Name);
+                    break;
+                case "brand_desc":
+                    q = q.OrderByDescending(s => s.Brand.Name);
                     break;
             }
 
             int pageSize = 2;
-            var lst = await Lib.PaginatedList<Data.Entities.Product>.CreateAsync(q, pageIndex ?? 1, pageSize);
+
+            var lst = q.ToPagedList(pageIndex ?? 1, pageSize);
+
+            //var lst = await Lib.PaginatedList<Data.Entities.Product>.CreateAsync(q, pageIndex ?? 1, pageSize);
 
             return lst;
         }
@@ -127,6 +149,66 @@ namespace OnlineStore.Areas.Admin.Controllers
             {
                 return View();
             }
+        }
+
+        public ContentResult GetProductCategories(int pid)
+        {
+            var cats = _repository.GetProductCategories(pid).Select(x => x.Name).ToList(); ;
+
+            string r = "<li class=\"list-group-item\">" + string.Join("</li><li class=\"list-group-item\">", cats) + "</li>";
+
+            return new ContentResult { Content = r };
+        }
+
+        public JsonResult GetTree(string query, int pid)
+        {
+            var lst = _repository.GetCategories().ToList();
+
+            var lstproductcats = _repository.GetProductCategories(pid).Select(x => x.ID).ToList();
+
+            var records = lst.Where(l => l.CategoryParentID == null).OrderBy(l => l.ID)
+                .Select(x => new CategoryTreeViewModel
+                {
+                    ID = x.ID,
+                    Text = x.Name,
+                    Checked = lstproductcats.Contains(x.ID),
+                    Children = GetChildren(lst, x.ID, lstproductcats)
+                }).ToList();
+
+            return this.Json(records);
+        }
+
+        private List<CategoryTreeViewModel> GetChildren(List<Data.Entities.Category> lst, int parentId, List<int> lstproductcats)
+        {
+            var records = lst.Where(l => l.CategoryParentID == parentId).OrderBy(l => l.ID)
+                .Select(x => new CategoryTreeViewModel
+                {
+                    ID = x.ID,
+                    Text = x.Name,
+                    Checked = lstproductcats.Contains(x.ID),
+                    Children = GetChildren(lst, x.ID, lstproductcats)
+                }).ToList();
+
+            return records;
+        }
+
+        [HttpPost]
+        public JsonResult SaveCheckedNodes(List<int> checkedIds, int pid)
+        {
+            var lst = _repository.UpdateProductCategories(pid, checkedIds);
+
+            return this.Json(true);
+        }
+
+        public IActionResult GetImage(string img)
+        {
+            var file  = _hostingEnvironment.ContentRootPath + "\\ProductImages\\" + img + ".jpg";
+
+            if (!System.IO.File.Exists(file))
+                return NotFound();
+
+            var image = System.IO.File.OpenRead(file);
+            return File(image, "image/jpeg");
         }
     }
 }

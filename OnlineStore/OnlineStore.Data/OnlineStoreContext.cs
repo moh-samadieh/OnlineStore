@@ -28,6 +28,7 @@ namespace OnlineStore.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductConfig> ProductConfigs { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Seller> Sellers { get; set; }
     }
 }

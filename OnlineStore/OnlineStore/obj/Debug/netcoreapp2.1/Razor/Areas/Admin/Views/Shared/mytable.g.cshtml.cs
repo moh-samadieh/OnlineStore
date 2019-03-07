@@ -13,8 +13,18 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#line 2 "E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\Areas\Admin\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#line 3 "E:\Projects\OnlineStore\GIT\OnlineStore\OnlineStore\Areas\Admin\Views\_ViewImports.cshtml"
+using X.PagedList.Mvc.Core;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4d446088849373c0af051d38584baa29fcbfc478", @"/Areas/Admin/Views/Shared/mytable.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9af4978b9c2bfca24ef48e96efe5f8573634464", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1dd1be2076fb099354ed9aa22cd98f0786e59971", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Shared_mytable : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<OnlineStore.Data.Entities.Product>>
     {
         #pragma warning disable 1998

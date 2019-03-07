@@ -17,7 +17,7 @@ namespace OnlineStore.Data.Entities
 
         public Product Product { get; set; }
 
-        [NotMapped]
-        public string WebImageURL => this.ImageURL;
+        //[NotMapped]
+        //public string WebImageURL => this.ImageURL;
     }
 }

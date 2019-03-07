@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,16 +16,23 @@ namespace OnlineStore.Areas.Admin.Controllers
     public class BaseController : Controller
     {
         public readonly Repository _repository;
+        public readonly IHostingEnvironment _hostingEnvironment;
 
-        public BaseController(Services.Repository repository)
+        public BaseController(Repository repository, IHostingEnvironment hostingEnvironment)
         {
             this._repository = repository;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Product
-        public virtual ActionResult Index()
+        public virtual ActionResult Index(int page = 1, string search = "", string sort = "")
         {
-            var m = GetDataRows();
+            search = search ?? "";
+
+            var m = GetDataRows(page, search, sort);
+
+            ViewBag.Search = search;
+
             return View(m);
         }
 
@@ -60,7 +68,7 @@ namespace OnlineStore.Areas.Admin.Controllers
             return View(m);
         }
 
-        public virtual object GetDataRows()
+        public virtual object GetDataRows(int page = 1, string search = "", string sort = "")
         {
             return null;
         }
